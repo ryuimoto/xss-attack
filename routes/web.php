@@ -16,3 +16,6 @@ Route::get('/', function () {
 });
 
 Route::get('form','User\FormController@index');
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
