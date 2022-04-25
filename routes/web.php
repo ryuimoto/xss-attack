@@ -15,4 +15,4 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-// Route::get('form');
+Route::get('form','User\FormController@index');
