@@ -15,7 +15,13 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('form','User\FormController@index');
-Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
+
+Route::get('login','User\FormController@index');
+
+
+Route::middleware('auth:user')->group(function () {
+    Route::get('test',function(){
+        return 2434532;
+    });
+});
