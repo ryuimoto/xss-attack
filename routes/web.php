@@ -17,7 +17,7 @@ Route::get('/', function () {
 
 
 
-Route::get('login','User\FormController@index');
+Route::get('login','User\FormController@index')->name('user.login');
 
 
 Route::middleware('auth:user')->group(function () {
