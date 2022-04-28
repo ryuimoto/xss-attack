@@ -6,7 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
-
+use Illuminate\Support\Facades\Auth;
 
 class LoginController extends Controller
 {
@@ -23,15 +23,14 @@ class LoginController extends Controller
 
     use AuthenticatesUsers;
 
-    /**
+      /**
      * Where to redirect users after login.
      *
      * @var string
      */
-    public function redirectPath()
-    {
-        // return '任意のurl';
-        return redirect()->route('user.top');
+    protected function redirectTo() {
+        
+        return route('user.top');
     }
 
     public function showLoginForm()
@@ -39,13 +38,22 @@ class LoginController extends Controller
         return view('user.form');
     }
 
+    public function __construct()
+    {
+        $this->middleware('guest')->except('logout');
+    }
+
     /**
      * Create a new controller instance.
      *
      * @return void
      */
-    public function __construct()
+    public function logout()
     {
-        $this->middleware('guest')->except('logout');
+        // $this->middleware('guest')->except('logout');
+        Auth::guard()->logout();
+
+
+        return redirect()->route('user.login');
     }
 }

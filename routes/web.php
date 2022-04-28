@@ -15,11 +15,8 @@
 Route::get('login','User\LoginController@showLoginForm')->name('user.login');
 Route::post('login','User\LoginController@login');
 
+Route::group(['middleware' => 'auth:user'], function () {
+    Route::get('','User\TopController@index')->name('user.top');
 
-Route::middleware('auth:user')->group(function () {
-    Route::get('',function(){
-        return 2434532;
-    });
-
-    // Route::get('','User\LoginController@');
+    Route::get('logout','User\LoginController@logout')->name('user.logout');
 });

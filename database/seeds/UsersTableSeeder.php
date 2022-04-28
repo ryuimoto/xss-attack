@@ -15,7 +15,7 @@ class UsersTableSeeder extends Seeder
      */
     public function run()
     {
-        for ($i=0; $i < 1000; $i++) { 
+        for ($i=0; $i < 2; $i++) { 
             dump("num".$i);
         
             $email = "test$i@gmail.com";
