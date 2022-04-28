@@ -11,17 +11,15 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
 
-
-
-Route::get('login','User\FormController@index')->name('user.login');
+Route::get('login','User\LoginController@showLoginForm')->name('user.login');
+Route::post('login','User\LoginController@login');
 
 
 Route::middleware('auth:user')->group(function () {
-    Route::get('test',function(){
+    Route::get('',function(){
         return 2434532;
     });
+
+    // Route::get('','User\LoginController@');
 });
